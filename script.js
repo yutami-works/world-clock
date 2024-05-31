@@ -63,3 +63,13 @@ function clock() {
   // 日付をセット
   dateElement.innerHTML = year + "/" + month + "/" + day + " " + week;
 }
+
+/* メイン関数 */
+const main = () => {
+  // 1秒ごとに要素を更新する
+  const intervalMS = 1000;
+  const intervalID = setInterval(clock, intervalMS);
+}
+
+// 実行
+main();
