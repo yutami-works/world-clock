@@ -36,7 +36,7 @@ const updateClock = () => {
   var timeZone = cityElm.options[index].value;
 
   // タイムゾーンをセット
-  timezoneElm.innerHTML = "Timezone:" + timeZone;
+  timezoneElm.innerHTML = `Timezone:${timeZone}`;
 
   // 選択された都市の時間（ミリ秒）
   var timeCity = timeUTC + timeZone * 60 * 60 *1000;
@@ -50,7 +50,7 @@ const updateClock = () => {
   const sec = zeroPadding2(now.getSeconds()); // 秒
 
   // 時間をセット
-  timeElm.innerHTML = hour + ":" + min + ":" + sec;
+  timeElm.innerHTML = `${hour}:${min}:${sec}`;
 
   // 年月日の取得
   const year = now.getFullYear();                 // 年
@@ -62,7 +62,7 @@ const updateClock = () => {
   const dow = convertDayNum2DayOfWeek(dayNum);
 
   // 日付をセット
-  dateElm.innerHTML = year + "/" + month + "/" + day + " " + dow;
+  dateElm.innerHTML = `${year}/${month}/${day} ${dow}`;
 }
 
 /* メイン関数 */
