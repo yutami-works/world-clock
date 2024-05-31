@@ -1,3 +1,9 @@
+/* HTML要素 */
+const cityElement = document.getElementById("city");         // タイムゾーン選択
+const timezoneElement = document.getElementById("timezone"); // タイムゾーン表示
+const timeElement = document.getElementById("time");         // 日付表示
+const dateElement = document.getElementById("date");         // 時間表示
+
 // 時計の表示
 function clock() {
   // 現在の日時
@@ -10,12 +16,9 @@ function clock() {
   var timeUTC = timeTokyo - 9 * 60 * 60 * 1000;
 
   // 選択された都市のタイムゾーン
-  var cityElement = document.getElementById("city");
   var index = cityElement.selectedIndex;
   var timeZone = cityElement.options[index].value;
 
-  // タイムゾーン用の要素取得
-  var timezoneElement = document.getElementById("timezone");
   // タイムゾーンをセット
   timezoneElement.innerHTML = "Timezone:" + timeZone;
 
@@ -37,8 +40,6 @@ function clock() {
   if (min < 10) min = "0" + min;
   if (sec < 10) sec = "0" + sec;
 
-  // 時間表示用の要素取得
-  var timeElement = document.getElementById("time");
   // 時間をセット
   timeElement.innerHTML = hour + ":" + min + ":" + sec;
 
@@ -59,7 +60,7 @@ function clock() {
   var week = weekArray[now.getDay()];
 
   // 日付表示用の要素の取得
-  var dateElement = document.getElementById("date");
+
   // 日付をセット
   dateElement.innerHTML = year + "/" + month + "/" + day + " " + week;
 }
