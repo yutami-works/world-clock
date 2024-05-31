@@ -4,6 +4,14 @@ const timezoneElm = document.getElementById("timezone"); // タイムゾーン�
 const timeElm = document.getElementById("time");         // 日付表示
 const dateElm = document.getElementById("date");         // 時間表示
 
+/* 2桁ゼロパディング */
+const zeroPadding2 = (number) => {
+  const numStr = String(number);
+  const zeroPaddingNum = numStr.padStart(2, '0');
+
+  return zeroPaddingNum;
+}
+
 /* 曜日取得関数 */
 const convertDayNum2DayOfWeek = (dayNumber) => {
   const dayOfWeekArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -36,31 +44,18 @@ const updateClock = () => {
   // 選択された都市の日時
   now = new Date(timeCity);
 
-  // 時間の取得
-  var hour = now.getHours();
-  // 分の取得
-  var min = now.getMinutes();
-  // 秒の取得
-  var sec = now.getSeconds();
-
-  // 2桁表示に変更
-  if (hour < 10) hour = "0" + hour;
-  if (min < 10) min = "0" + min;
-  if (sec < 10) sec = "0" + sec;
+  // 時刻の取得
+  const hour = zeroPadding2(now.getHours());  // 時
+  const min = zeroPadding2(now.getMinutes()); // 分
+  const sec = zeroPadding2(now.getSeconds()); // 秒
 
   // 時間をセット
   timeElm.innerHTML = hour + ":" + min + ":" + sec;
 
-  // 年の取得
-  var year = now.getFullYear();
-  // 月の取得
-  var month = now.getMonth() + 1;
-  // 日の取得
-  var day = now.getDate();
-
-  // 月、日を2ケタ表示に変更
-  if (month < 10) month = "0" + month;
-  if (day < 10) day = "0" + day;
+  // 年月日の取得
+  const year = now.getFullYear();                 // 年
+  const month = zeroPadding2(now.getMonth() + 1); // 月
+  const day = zeroPadding2(now.getDate());        // 日
 
   // 曜日の取得
   const dayNum = now.getDay();
