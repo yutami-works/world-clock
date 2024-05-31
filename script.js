@@ -4,6 +4,14 @@ const timezoneElm = document.getElementById("timezone"); // タイムゾーン�
 const timeElm = document.getElementById("time");         // 日付表示
 const dateElm = document.getElementById("date");         // 時間表示
 
+/* 曜日取得関数 */
+const convertDayNum2DayOfWeek = (dayNumber) => {
+  const dayOfWeekArray = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const dayOfWeek = dayOfWeekArray[dayNumber];
+
+  return dayOfWeek;
+}
+
 // 時計の表示更新
 const updateClock = () => {
   // 現在の日時
@@ -54,13 +62,12 @@ const updateClock = () => {
   if (month < 10) month = "0" + month;
   if (day < 10) day = "0" + day;
 
-  // 曜日の名称
-  var weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   // 曜日の取得
-  var week = weekArray[now.getDay()];
+  const dayNum = now.getDay();
+  const dow = convertDayNum2DayOfWeek(dayNum);
 
   // 日付をセット
-  dateElm.innerHTML = year + "/" + month + "/" + day + " " + week;
+  dateElm.innerHTML = year + "/" + month + "/" + day + " " + dow;
 }
 
 /* メイン関数 */
