@@ -9,6 +9,7 @@
 </head>
 <body onLoad="setInterval('clock()', 1000)">
   <div id="clock">
+    <!-- タイムゾーン選択 -->
     <select id="city">
       <option value="-10">Honolulu（USA）
       <option value="-8">Los Angeles（USA）
@@ -23,9 +24,12 @@
     </select>
     <span id="timezone"></span>
     <img src="worldmap.jpg">
+    <!-- 日付 -->
     <div id="date">----/--/-- ---</div>
+    <!-- 時間 -->
     <div id="time">--:--:--</div>
   </div>
+  <!-- 全ての要素が読み込まれた後にjsを読み込む -->
   <script src="./script.js"></script>
 </body>
 </html>
