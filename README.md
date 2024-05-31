@@ -1,3 +1,3 @@
-# denv
+# world-clock
 
-dev用のenv
+タイムゾーン付き世界時計
