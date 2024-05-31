@@ -1,11 +1,11 @@
 /* HTML要素 */
-const cityElement = document.getElementById("city");         // タイムゾーン選択
-const timezoneElement = document.getElementById("timezone"); // タイムゾーン表示
-const timeElement = document.getElementById("time");         // 日付表示
-const dateElement = document.getElementById("date");         // 時間表示
+const cityElm = document.getElementById("city");         // タイムゾーン選択
+const timezoneElm = document.getElementById("timezone"); // タイムゾーン表示
+const timeElm = document.getElementById("time");         // 日付表示
+const dateElm = document.getElementById("date");         // 時間表示
 
-// 時計の表示
-function clock() {
+// 時計の表示更新
+const updateClock = () => {
   // 現在の日時
   var now = new Date();
 
@@ -16,11 +16,11 @@ function clock() {
   var timeUTC = timeTokyo - 9 * 60 * 60 * 1000;
 
   // 選択された都市のタイムゾーン
-  var index = cityElement.selectedIndex;
-  var timeZone = cityElement.options[index].value;
+  var index = cityElm.selectedIndex;
+  var timeZone = cityElm.options[index].value;
 
   // タイムゾーンをセット
-  timezoneElement.innerHTML = "Timezone:" + timeZone;
+  timezoneElm.innerHTML = "Timezone:" + timeZone;
 
   // 選択された都市の時間（ミリ秒）
   var timeCity = timeUTC + timeZone * 60 * 60 *1000;
@@ -41,7 +41,7 @@ function clock() {
   if (sec < 10) sec = "0" + sec;
 
   // 時間をセット
-  timeElement.innerHTML = hour + ":" + min + ":" + sec;
+  timeElm.innerHTML = hour + ":" + min + ":" + sec;
 
   // 年の取得
   var year = now.getFullYear();
@@ -59,17 +59,15 @@ function clock() {
   // 曜日の取得
   var week = weekArray[now.getDay()];
 
-  // 日付表示用の要素の取得
-
   // 日付をセット
-  dateElement.innerHTML = year + "/" + month + "/" + day + " " + week;
+  dateElm.innerHTML = year + "/" + month + "/" + day + " " + week;
 }
 
 /* メイン関数 */
 const main = () => {
   // 1秒ごとに要素を更新する
   const intervalMS = 1000;
-  const intervalID = setInterval(clock, intervalMS);
+  const intervalID = setInterval(updateClock, intervalMS);
 }
 
 // 実行
